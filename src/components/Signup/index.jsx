@@ -2,27 +2,58 @@ import React, { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
 import { Link } from "react-router-dom";
-export default function Signup(){
+export default function Signup() {
   const [value, setValue] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
+  const [parcelId, setParcelId]=useState('')
+  const [password, setPassword] = useState("");
+  const [passwordConfirmation, setPasswordConfirmation] = useState("");
+  // const [errors, setErrors] = useState([]);
+
+  function handleSumbit(e) {
+    e.preventDefault()
+    fetch('https://mammoth-production.up.railway.app/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        value,
+        email,
+        address,
+        parcelId,
+        password,
+        password_confirmation: passwordConfirmation,
+      })
+    })
+    .then((r)=>{
+      if(r.ok){
+        r.json().then((data)=>{
+          console.log(data)
+        })
+      }
+    })
+  }
   return (
     <div className=" w-2/3 m-auto h-auto pb-20  ">
-      <form className="">
+      <form onSubmit={handleSumbit} className="">
         <div className="">
-        <div className="lg:w-full sm:mx-auto sm:w-full sm:max-w-md">
-          <h2 className="mt-6 text-center text-2xl font-bold  text-indigo-600">
-            Sign up
-          </h2>
+          <div className="lg:w-full sm:mx-auto sm:w-full sm:max-w-md">
+            <h2 className="mt-6 text-center text-2xl font-bold  text-indigo-600">
+              Sign up
+            </h2>
 
-          <p className="mt-2 text-center text-sm text-gray-600">
-            Or
-            <Link
-              to="/login"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              Register Here
-            </Link>
-          </p>
-        </div>
+            <p className="mt-2 text-center text-sm text-gray-600">
+              Or
+              <Link
+                to="/login"
+                className="font-medium text-indigo-600 hover:text-indigo-500"
+              >
+                Register Here
+              </Link>
+            </p>
+          </div>
           <div className="rounded m-auto w-full mt-6 flex justify-center">
 
             <div className="mt-6">
@@ -36,11 +67,12 @@ export default function Signup(){
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input
+                      onChange={(e) => setEmail(e.target.value)}
                       type="email"
                       name="email"
                       id="email"
-                      class="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                      />
+                      class="block w-3/4 px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                    />
                   </div>
                 </div>
                 <div className="">
@@ -52,12 +84,13 @@ export default function Signup(){
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input
+                      onChange={(e) => setAddress(e.target.value)}
                       type="address"
                       name="address"
                       id="address"
                       placeholder="Address"
-                      className="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                      />
+                      class="block w-3/4 px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                    />
                   </div>
                 </div>
               </div>
@@ -71,11 +104,12 @@ export default function Signup(){
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input
+                      onChange={(e) => setPassword(e.target.value)}
                       type="password"
                       name="password"
                       id="password"
-                      className="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                      />
+                      class="block w-3/4 px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                    />
                   </div>
                 </div>
                 <div className="">
@@ -87,11 +121,12 @@ export default function Signup(){
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input
+                      onChange={(e) => setPasswordConfirmation(e.target.value)}
                       type="password"
                       name="password_confirmation"
                       id="password_confirmation"
-                      className="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                      />
+                      class="block w-3/4 px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                    />
                   </div>
                 </div>
               </div>
@@ -105,11 +140,12 @@ export default function Signup(){
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input
+                      onChange={(e)=>setParcelId(e.target.value)}
                       type="parcel"
                       name="parcel"
                       id="parcel_id" placeholder="parcel id"
-                      className="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
-                      />
+                      class="block w-3/4 px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                    />
                   </div>
                 </div>
                 <div className="sm:col-span-3">
