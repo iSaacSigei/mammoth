@@ -1,19 +1,29 @@
 import React, { useState } from "react";
 import PhoneInput from "react-phone-number-input";
 import "react-phone-number-input/style.css";
-
-export default function Signup() {
+import { Link } from "react-router-dom";
+export default function Signup(){
   const [value, setValue] = useState("");
   return (
     <div className=" w-2/3 m-auto h-auto pb-20  ">
       <form className="">
         <div className="">
-            <div className="h-24 flex items-center justify-center">
-              <h3 className="text-2xl font-medium leading-6 text-indigo-600 ">
-                Signup Form
-              </h3>
-            </div>
-          <div className="lg:border rounded m-auto w-1/2 mt-6 flex justify-center">
+        <div className="lg:w-full sm:mx-auto sm:w-full sm:max-w-md">
+          <h2 className="mt-6 text-center text-2xl font-bold  text-indigo-600">
+            Sign up
+          </h2>
+
+          <p className="mt-2 text-center text-sm text-gray-600">
+            Or
+            <Link
+              to="/login"
+              className="font-medium text-indigo-600 hover:text-indigo-500"
+            >
+              Register Here
+            </Link>
+          </p>
+        </div>
+          <div className="rounded m-auto w-full mt-6 flex justify-center">
 
             <div className="mt-6">
               <div className=" lg:flex lg:flex-row sm:flex-col justify-around">
@@ -22,15 +32,15 @@ export default function Signup() {
                     htmlFor="username"
                     className="block text-md font-medium text-gray-700 pb-3"
                   >
-                    email
+                    Email
                   </label>
                   <div className="mt-1 flex rounded-md shadow-sm">
                     <input
                       type="email"
                       name="email"
                       id="email"
-                      className="block w-2/3 min-w-0 flex-1 p-1 rounded border border-gray-400  sm:text-sm "
-                    />
+                      class="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                      />
                   </div>
                 </div>
                 <div className="">
@@ -46,8 +56,8 @@ export default function Signup() {
                       name="address"
                       id="address"
                       placeholder="Address"
-                      className="block w-1/4 min-w-0 flex-1 p-1 rounded border border-gray-400  sm:text-sm "
-                    />
+                      className="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                      />
                   </div>
                 </div>
               </div>
@@ -64,8 +74,8 @@ export default function Signup() {
                       type="password"
                       name="password"
                       id="password"
-                      className="block w-1/4 min-w-0 flex-1 p-1 rounded border border-gray-400  sm:text-sm "
-                    />
+                      className="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                      />
                   </div>
                 </div>
                 <div className="">
@@ -80,8 +90,8 @@ export default function Signup() {
                       type="password"
                       name="password_confirmation"
                       id="password_confirmation"
-                      className="block w-1/4 min-w-0 flex-1 p-1 rounded border border-gray-400  sm:text-sm "
-                    />
+                      className="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                      />
                   </div>
                 </div>
               </div>
@@ -98,8 +108,8 @@ export default function Signup() {
                       type="parcel"
                       name="parcel"
                       id="parcel_id" placeholder="parcel id"
-                      className="block w-1/4 min-w-0 flex-1 p-1 rounded border border-gray-400  sm:text-sm "
-                    />
+                      className="block w-full px-5 py-1 border rounded-lg bg-white shadow-lg placeholder-gray-400 text-gray-700 focus:ring focus:outline-none"
+                      />
                   </div>
                 </div>
                 <div className="sm:col-span-3">
@@ -122,7 +132,7 @@ export default function Signup() {
               </div>
 
               <div className="lg:flex lg:flex-row sm:flex-col justify-center p-6">
-                <div className="">
+                <div className="mr-4">
                   <label
                     htmlFor="cover-photo"
                     className="block text-md font-medium text-gray-700 pb-3"
